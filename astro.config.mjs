@@ -6,22 +6,19 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
+			title: 'OpenTPW Format Docs',
 			social: {
-				github: 'https://github.com/withastro/starlight',
+				github: 'https://github.com/OpenTPW/OpenTPW.FileFormats',
 			},
 			sidebar: [
 				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
+					label: 'Formats',
+					autogenerate: { directory: 'formats' },
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
+					label: "Ride VM",
+					autogenerate: { directory: 'vm' }
+				}
 			],
 		}),
 	],
