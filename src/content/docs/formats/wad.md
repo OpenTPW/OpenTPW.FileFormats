@@ -2,7 +2,9 @@
 title: Archives (*.wad)
 ---
 
-The Bullfrog WAD file format contains compressed (or uncompressed) data for rides, textures, UI elements, and more.  The data within these files is typically compressed using [RefPack](http://wiki.niotso.org/RefPack) (see below).  A variant of this file format, known as WAD (FKNL), is used in the PlayStation 2 version of Theme Park World, however is not compatible with DWFB.
+The Bullfrog WAD file format contains compressed (or uncompressed) data for rides, textures, UI elements, and more.
+
+The data within these files is typically compressed using [RefPack](http://wiki.niotso.org/RefPack) (see below).
 
 ### File Format
 
@@ -36,7 +38,7 @@ The Bullfrog WAD file format contains compressed (or uncompressed) data for ride
 Occasionally, a file's filename may begin with the name of a directory separated using the `\` character. This should
 be treated as entering a directory, meaning that file and any further files all belong to that folder.
 
-Here's an example:
+For example:
 
 | File #    | Filename                  |
 |-----------|---------------------------|
@@ -47,6 +49,9 @@ Here's an example:
 | 4         | stexture\\hello.wct       |
 | 5         | hello2.wct                |
 
-Here, files 0 and 1 both belong to the root of the archive. Files 2 and 3 exist in the `textures` directory, whereas
-files 4 and 5 belong to the `stexture` directory. Despite file 3 and file 5 both being called `hello2.wct`, they do not
-overlap - they belong in different directories - and therefore they do not conflict. 
+Here:
+- Files 0 and 1 both belong to the root of the archive
+- Files 2 and 3 exist in the `textures` directory
+- Files 4 and 5 belong to the `stexture` directory.
+ 
+Despite file 3 and file 5 both being called `hello2.wct`, they do not overlap - they belong in different directories - and therefore they do not conflict. 

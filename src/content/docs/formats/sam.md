@@ -2,9 +2,9 @@
 title: Settings and Modifiers (*.sam)
 ---
 
-SAM (**S**ettings **a**nd **M**odifiers) is a plain-text format that specifies various options for within the game. These files can be found both within archives and within the base directories for Theme Park World.  
+SAM files are plain-text files that specify values for different parts of the game. These files can be found both within archives and within the base directories for Theme Park World.  
 
-A typical SAM file may look like this:
+A typical SAM file looks like this:
 
 ```text
 # Sell 30 Drinks in 60 days
@@ -20,10 +20,10 @@ Challenges[1].CheckAtEndOnly        0
 Challenges[1].Independent           1
 ```
 
-They are often well-commented, meaning that the purpose of the file & its contents can easily be discerned without needing access to any of the source code for the game.
-
 ## Format
 
-SAM files often follow the format of `key <whitespace> value`, making the format incredibly easy to read, understand, and modify.
+SAM files follow the format of `key <whitespace> value`.
+
 Comments are preceded with a pound symbol (`#`) and continue until the end of the line.
+
 Strings are surrounded with double quotes (`"`) and are used for various properties, i.e. the ride's name.

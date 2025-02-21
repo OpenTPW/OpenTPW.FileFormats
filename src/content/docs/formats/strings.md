@@ -28,8 +28,6 @@ The contents of this file may differ depending on the language that is being use
 The Bullfrog String file format (*.str) is used in order to store localized strings for in-game text.
 These don't have any specific character encoding - they use the two aforementioned file formats to convert to and from 'Bullfrog Multi-byte' characters.
 
-The BFST (**B**ull**f**rog **St**ring) file format is used in order to specify strings for each piece of in-game text.  This aids with localization and translation.  BFST files don't have their own character encoding; instead, they use the two BFST files within the BFST's directory in order to specify each character.
-
 ### File Format
 
 **Header**

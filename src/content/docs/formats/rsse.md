@@ -11,12 +11,12 @@ RSE is a file that encompasses compiled bytecode, the contents of which are deci
 | Size     | Description                                                                 |
 | -------- | --------------------------------------------------------------------------- |
 | 8 bytes  | Magic number - `RSSEQ` (`52 53 53 45 51 0F 01 00`)                          |
-| 4 bytes  | variable count (see [String / variable table](#string--variable-table))     |
-| 4 bytes  | stack size (defined by [`#setstack`](#preprocessor-directives))             |
+| 4 bytes  | variable count (see **String / variable table** below)                      |
+| 4 bytes  | stack size (defined by `#setstack`)                                         |
 | 4 bytes  | time slice - almost always `50` (`0x32`), preprocessor directive is unknown |
-| 4 bytes  | limbo size (defined by [`#setlimbo`](#preprocessor-directives))             |
-| 4 bytes  | bounce size (defined by [`#setbounce`](#preprocessor-directives))           |
-| 4 bytes  | walk size (defined by [`#setwalk`](#preprocessor-directives))               |
+| 4 bytes  | limbo size (defined by `#setlimbo`)                                         |
+| 4 bytes  | bounce size (defined by `#setbounce`)                                       |
+| 4 bytes  | walk size (defined by `#setwalk`)                                           |
 | 16 bytes | Padding - `Pad Pad Pad Pad` (includes a trailing space)                     |
 
 **Body**
@@ -24,7 +24,7 @@ RSE is a file that encompasses compiled bytecode, the contents of which are deci
 | Size    | Description                   |
 | ------- | ----------------------------- |
 | 4 bytes | Instruction count             |
-| n bytes | [Instructions](#instructions) |
+| n bytes | Instructions                  |
 
 **Instructions**
 
@@ -47,9 +47,9 @@ Opcodes and operands follow a specific format:
 Flags are currently as follows:
 
 - `00 00` - Literal value
-- `00 10` - String (see [String / variable table](#string--variable-table))
+- `00 10` - String (see **String / variable table** below)
 - `00 20` - Branch / subroutine
-- `00 40` - Variable name (see [String / variable table](#string--variable-table))
+- `00 40` - Variable name (see **String / variable table** below)
 - `00 80` - Opcode
 
 **String / variable table**

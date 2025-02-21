@@ -26,9 +26,10 @@ The following variables are part of a "common variable set" that must be contain
 
 ## Flags
 
-- **Sign flag**
-  - `1` for negative value
-  - `0` for positive value
-- **Zero flag**
-  - `1` for zero
-  - `0` for not zero
+**Sign flag**:
+- `1` for negative value
+- `0` for positive value
+  
+**Zero flag**:
+- `1` for zero
+- `0` for not zero
