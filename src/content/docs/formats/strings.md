@@ -89,3 +89,9 @@ strings through the directory rather than one after another.
 The interface strings. All three releases have 473 strings in the same order, so an index means the
 same thing in every language - for example 37 "Scrap value", 68 "Energy", 207 "Send Postcard", 420
 "Create New Player" and 472 the unsent postcards warning.
+
+### US 2.0 table indices and language packs
+
+The US 2.0 `UITEXT.str` contains 474 entries, with an additional entry at index 207. Consequently, code using the older 473-entry ordering adjusts indices at and after that position when reading the US table; the original 473-entry tables retain their existing indices. This distinction is established by the US and older-release data and the locale reader.
+
+OpenTPW resolves `Language/<language>/` case-insensitively, preferring `american` over `English` when neither an explicit selection nor a unique language-pack choice determines the language. A language pack overlays its `data` files ahead of the base installation; missing resources fall back to the base data. These are OpenTPW lookup rules, not additional bytes in the string format.
