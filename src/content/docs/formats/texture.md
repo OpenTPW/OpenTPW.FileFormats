@@ -9,9 +9,9 @@ title: Texture (*.wct)
 | Size    | Description                              |
 | ------- | ---------------------------------------- |
 | 1 byte  | Compression type: 0x12: zlib, 0x13: lzss |
-| 1 byte  | version                                  |
+| 1 byte  | Alpha-channel flag                       |
 | 1 byte  | bit count                                |
-| 1 byte  | unknown                                  |
+| 1 byte  | Version                                  |
 | 2 bytes | width                                    |
 | 2 bytes | height                                   |
 | 2 bytes | Y channel quantization scale             |
@@ -20,7 +20,7 @@ title: Texture (*.wct)
 | 2 bytes | A channel quantization scale             |
 | 4 bytes | block 0 size                             |
 | 4 bytes | block 1 size                             |
-| 4 bytes | unknown                                  |
+| 4 bytes | Checksum field                           |
 
 ## Decoding Image
 
@@ -65,7 +65,7 @@ while true:
   else:
     offset := GetBits( 12 )
     length := GetBits( 7 ) + 1
-    
+
     if offset == 0:
       break
     for 0..length:
@@ -76,3 +76,14 @@ while true:
 Cb/Cr use size / 2
 
 6. Convert YCbCr values to RGB
+
+## Coefficient layout
+
+The first header byte selects both compression and the order of the row coefficients. Traditional Chinese `TP.exe` `0x58e510` dispatches `0x12` to `0x58ff60` and `0x13` to `0x591dd0`.
+
+- `0x12` uses packed rows: for a row of size `N`, the first `N/2` values are scale coefficients and the next `N/2` are wavelet coefficients.
+- `0x13` interleaves scale and wavelet coefficients in each row: scale at `2*i`, wavelet at `2*i+1`.
+
+In either layout, a coefficient is a signed byte unless it is `-128`, in which case the following little-endian signed 16-bit value is used. The inverse column transform uses the top and bottom halves of the intermediate buffer as scale and wavelet coefficients.
+
+The final u32 is a checksum field in the reader.
